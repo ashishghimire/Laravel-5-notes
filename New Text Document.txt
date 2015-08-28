@@ -1,0 +1,49 @@
+-things are very simple
+-routes.php :: change it for anything you want
+
+//do this
+-open env.example
+-rename to .env
+
+//Route::
+	Route::get('/home' , 'PagesController@home');
+
+
+//make new controller:
+
+php artisan make:controller PagesController --plain 
+
+//passing the data to views
+a) 
+	$name = 'bijaya';
+	return view('pages.contact')->with('name' , $name);
+
+b) passing array:
+
+	return view('pages.contact')->with([
+	
+		'first' => 'bijaya',
+		'last' => 'kuikel'
+
+	]);
+
+	//you can view these values at view as:
+
+	{{ $first }} {{ $last }}
+
+c) Third approach : send the array as second parameter::
+
+	$data = [];
+	$data['first'] = 'bijaya';
+	$data['last'] = 'kuikel';
+
+	return view('pages.contact' , $data);
+
+	//rest of things are same on view
+
+d) Best idea:
+	$first = 'bijaya';
+	$second = 'kuikel';
+
+	return view('pages.contact' , compact('first' , 'second'));
+
